@@ -2,9 +2,9 @@
 
 > Original [Claude Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agent-skills) for AI-native digital marketing — built from the ground up by **[Archit Shah](https://github.com/architshahdigital)**.
 
-A curated, **100% original** collection of skills that turn Claude into a marketing operator: they encode real workflows for AI answer-engine optimization, paid media, and content production — the same systems I use running growth for [BrewYourSip](https://brewyoursip.com) and client work.
+A curated, **100% original** collection of skills that turn Claude into a marketing operator: they encode real workflows for AI answer-engine optimization, paid media, SEO, and content production — the same systems I use running growth for [BrewYourSip](https://brewyoursip.com) and client work.
 
-> **On originality:** every skill here is written from my own marketing practice and licensed MIT. Nothing is copied or forked from third-party skill packs — it's my expertise, expressed as reusable skills.
+> **On originality:** every skill here is written from my own marketing practice. Nothing is copied or forked from third-party skill packs — it's my expertise, expressed as reusable skills. All rights reserved.
 
 ---
 
@@ -16,8 +16,9 @@ A curated, **100% original** collection of skills that turn Claude into a market
 | **[ad-campaign-builder](skills/ad-campaign-builder)** | Full Meta & Google Ads campaign blueprint — funnel structure, budget split, audience mapping, and A/B-ready copy angles. |
 | **[content-repurposing-engine](skills/content-repurposing-engine)** | Atomize one hero asset into native LinkedIn, Instagram, X, and short-form video content — no lazy cross-posting. |
 | **[carousel-studio](skills/carousel-studio)** | Plan & write scroll-stopping carousels — slide copy, visual direction, and captions, ready for design. |
-
-*More skills in progress — SEO technical audit, brand-voice kit, and e-commerce listing optimizer.*
+| **[seo-technical-audit](skills/seo-technical-audit)** | Technical SEO audit — crawlability, indexation, Core Web Vitals, structured data — with a fix list ranked by impact × effort. |
+| **[brand-voice-kit](skills/brand-voice-kit)** | Turn a fuzzy brand voice into an operational rule set (traits, do/don't, lexicon, examples) that keeps all AI content on-brand. |
+| **[ecommerce-listing-optimizer](skills/ecommerce-listing-optimizer)** | Optimize Amazon/Shopify listings — title, bullets, A+ content, keywords, and image shot list — for conversion and search. |
 
 ---
 
@@ -33,7 +34,10 @@ claude-marketing-skills/
 │   │   ├── SKILL.md
 │   │   └── references/copy-angles.md
 │   ├── content-repurposing-engine/SKILL.md
-│   └── carousel-studio/SKILL.md
+│   ├── carousel-studio/SKILL.md
+│   ├── seo-technical-audit/SKILL.md
+│   ├── brand-voice-kit/SKILL.md
+│   └── ecommerce-listing-optimizer/SKILL.md
 ├── LICENSE
 └── README.md
 ```
@@ -48,7 +52,7 @@ Each skill follows the standard `SKILL.md` format (YAML frontmatter with `name` 
 
 ## 📄 License
 
-MIT © 2026 Archit Shah — free to use and adapt, with attribution.
+© 2026 Archit Shah. **All rights reserved.** These skills are shared publicly for portfolio and reference purposes only — please don't copy, reuse, or redistribute them without written permission. See [LICENSE](LICENSE).
 
 ## 🤝 Connect
 
