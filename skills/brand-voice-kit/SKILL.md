@@ -13,42 +13,66 @@ description: >
 
 A brand voice only works if it's *operational* — specific enough that a person or a model can apply it without guessing. This skill turns fuzzy adjectives ("professional but friendly") into a concrete rule set you can drop into any content workflow as guardrails.
 
-## Two modes
+## Fallback: Running in Cloud/Web Environments (e.g., Claude.ai, CoWork)
 
-- **Define** — build a voice profile from scratch (new brand, or never documented)
-- **Enforce** — take an existing voice profile and rewrite/QA a draft against it
+If you are running in a cloud-based or web-based environment (such as Claude.ai web or CoWork) where local file system or repository access is unavailable:
+1. Ask the user to paste 2-3 examples of writing they like, 1-2 examples they dislike, and their target audience.
+2. Conduct the voice analysis and build the rule set manually in-context.
+3. Output the structured Voice Profile using the templates below.
 
-## Building the voice profile (Define)
+---
 
-Gather inputs first: what the brand does, who it talks to, 2–3 sample pieces they *like*, and any they *don't*.
+## Workflow
 
-Then produce:
+1. **Intake & Material Review:**
+   - Gather sample articles, emails, or posts.
+   - Define target customer persona and context (e.g., B2B enterprise vs. consumer D2C).
 
-1. **Voice traits (3–4)** — each as a spectrum with a chosen position, e.g. *Formal ―—●— Casual*, *Playful —●—— Serious*. Vague single words aren't enough.
-2. **Do / Don't table** — concrete behaviors, not adjectives:
+2. **Establish Voice Traits (3–4 traits):**
+   - Define traits as clear spectrums (e.g., Formal to Casual). Specify where on the spectrum the brand sits.
+
+3. **Define Do / Don't Rules:**
+   - Map exact language behaviors, not just adjectives. Specify what to write and what to avoid.
+
+4. **Lexicon & Formatting Rules:**
+   - Document permitted terminology, banned buzzwords, emoji policies, and punctuation quirks.
+
+5. **Provide Before / After Examples:**
+   - Provide 2–3 side-by-side examples showing a generic sentence rewritten to match the brand voice.
+
+---
+
+## Templates & Output Format
+
+Ensure the brand voice profile is generated in a clean, drop-in format:
+
+### 1. Brand Voice Profile
+
+#### 🏷️ Voice Traits & Spectrums
+*   **Trait 1: [Name, e.g. Conversational]** — *Warm, personal, direct to consumer.*
+    `Formal ―――—●― Casual`
+*   **Trait 2: [Name, e.g. High Information]** — *Stat-driven, direct, educational.*
+    `Speculative ―――——● High-Proof`
+
+#### 📝 Rules Matrix
 
 | Do | Don't |
-|----|-------|
-| Short, active sentences | Corporate hedging ("we strive to…") |
-| Speak to "you" directly | Third-person distance |
-| Concrete examples & numbers | Buzzword stacking |
+| :--- | :--- |
+| **Write short, active sentences.** | **Corporate hedging (e.g., "we strive to").** |
+| **Address the reader as "you" directly.** | **Third-person distance (e.g., "users should").** |
+| **Use concrete examples and exact stats.** | **Buzzword stacking (e.g., "synergy", "disruptive").** |
 
-3. **Lexicon** — words/phrases the brand *uses* and ones it *bans*; preferred spellings, emoji policy, punctuation quirks.
-4. **Before/after examples** — 2–3 rewrites showing a generic line turned on-brand. Examples teach faster than rules.
-5. **The one-line north star** — a single sentence that captures the voice (a writer should be able to sanity-check any draft against it).
+#### 📖 Lexicon & Guidelines
+*   **Approved Terms:** `[term1]`, `[term2]`, `[term3]`
+*   **Banned Buzzwords:** `[word1]`, `[word2]`, `[word3]`
+*   **Emoji/Formatting Policy:** *E.g., Maximum 1 emoji per paragraph, no emojis in headers.*
 
-## Enforcing (rewrite / QA mode)
+#### 🔄 Voice Refinement Examples
 
-Given a draft + a voice profile:
-- Flag every line that violates a Do/Don't or uses a banned word
-- Rewrite flagged lines to match, preserving meaning
-- Return a short "voice score" and what changed
+```diff
+- [Generic: Our platform assists businesses in optimizing their social campaigns for enhanced user engagement.]
++ [On-Brand: We build tools that make your ads stand out so you get more clicks and sales.]
+```
 
-## How to use the output
-
-Paste the voice profile into the top of any content prompt (or the `content-repurposing-engine` / `carousel-studio` skills) as the brand-voice context — every downstream piece then inherits the same guardrails.
-
-## Guardrails
-
-- Anchor the profile in the brand's *real* samples, not generic best practice — voice is a fingerprint, not a template.
-- Don't over-constrain: leave room for the message; the voice serves communication, not the reverse.
+> [!TIP]
+> **The One-Line North Star:** Create a single, memorable sentence that sums up the voice (e.g., *"Write like an experienced colleague explaining a concept over coffee."*) so writers can quickly QA their drafts.

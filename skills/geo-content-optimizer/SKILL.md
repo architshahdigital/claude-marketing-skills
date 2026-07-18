@@ -15,33 +15,61 @@ description: >
 
 Classic SEO gets you ranked. **Generative Engine Optimization (GEO)** gets you *quoted* — cited inside an AI answer where the click, the trust, and the brand lift now happen. This skill audits content against the signals language models actually reward and rewrites it to be citable.
 
-## When to run this
+## Fallback: Running in Cloud/Web Environments (e.g., Claude.ai, CoWork)
 
-- The user has an article/landing page and wants it surfaced in AI answers.
-- Traffic is flat despite good rankings (answers are eating the clicks).
-- A brand wants to become the "quoted source" in its niche.
+If you are running in a cloud-based or web-based environment (such as Claude.ai web or CoWork) where local file system or repository access is unavailable:
+1. Ask the user to paste the target article text or provide the URL directly in the chat.
+2. Ask the user to define the target query/topic they want the content to be cited for.
+3. Perform the complete audit and rewrite manually within your conversation context.
+4. Output the same formatted scorecard and rewrite templates as defined below.
 
-## The 5 citability levers
-
-Work through these in order. Each maps to a concrete edit, not a vague principle.
-
-1. **Answer-first structure** — Lead every section with a direct, standalone answer in the first 1–2 sentences, then support it. Models extract self-contained passages; buried answers don't get lifted.
-2. **Extractable units** — Break claims into short, quotable statements. One idea per sentence. Definitions, steps, and comparisons in lists or tables (models parse these cleanly).
-3. **E-E-A-T evidence** — Attach *experience* and *authority* to every claim: first-hand data, named author with credentials, dates, primary sources, and specific numbers instead of "studies show."
-4. **Specificity over fluff** — Replace hedges ("many", "often", "can help") with concrete figures, named tools, and real examples. Models prefer high-information-density text.
-5. **Freshness + scope signals** — Add a visible "last updated" date, cover the *full* question space (definitions, edge cases, comparisons, FAQs) so the page is the complete answer, not a fragment.
+---
 
 ## Workflow
 
-1. **Intake** — Ask for the URL or pasted content and the target question/query it should win.
-2. **Audit** — Score the content 0–2 on each of the 5 levers. Output a short scorecard with the biggest gaps flagged.
-3. **Rewrite plan** — List the highest-leverage edits, ordered by impact. Be specific ("Rewrite the intro to answer '<query>' in the first sentence").
-4. **Execute** — Rewrite the weakest sections. Preserve the brand voice; add a source/date line; convert dense prose into extractable units.
-5. **FAQ block** — Generate 4–6 natural-language Q&As that mirror how people actually ask, each answered in 1–2 self-contained sentences.
+1. **Intake & Discovery:**
+   - Locate the target page content (either by reading a local file, or asking the user to paste it).
+   - Get the primary search query or question they want the page to answer.
+
+2. **The 5-Lever Citability Audit:**
+   - Evaluate the content from 0 (absent) to 2 (strong) across these 5 levers:
+     - **Answer-First Structure:** Are direct, self-contained answers placed at the start of each section?
+     - **Extractable Units:** Are claims written in short, simple sentences, using bullet points/tables where possible?
+     - **E-E-A-T Evidence:** Are claims backed by primary data, credentials, and update dates?
+     - **Specificity:** Are vague descriptions replaced with concrete numbers, names, and tools?
+     - **Freshness + Scope:** Is the date visible, and are related edge cases, comparisons, and FAQs covered?
+   
+3. **Generate Scorecard:**
+   - Present a formatted markdown table scoring each lever, followed by an overall Citability Score (out of 10).
+
+4. **Rewrite Plan & Execution:**
+   - List the exact edits needed (ranked by impact).
+   - Rewrite the weak sections of the content, highlighting the "Before" vs "After" changes in side-by-side or stacked diffs.
+
+5. **Generate FAQ Block:**
+   - Create 4-6 natural language Q&As designed specifically to match typical question intents.
+
+## Templates & Output Format
+
+### Citability Scorecard
+
+| Lever | Score (0-2) | Gap / Assessment |
+| :--- | :---: | :--- |
+| **Answer-First Structure** | `[0/1/2]` | *Assessment of whether the main answers are immediately visible.* |
+| **Extractable Units** | `[0/1/2]` | *Assessment of prose density and structure.* |
+| **E-E-A-T Evidence** | `[0/1/2]` | *Assessment of primary data, sources, and author credentials.* |
+| **Specificity** | `[0/1/2]` | *Assessment of data precision vs. vague hedges.* |
+| **Freshness + Scope** | `[0/1/2]` | *Assessment of date signals and comprehensive coverage.* |
+
+> [!TIP]
+> **Total Citability Score:** `X / 10` (8+ is highly citable)
+
+### Rewrite Example Format
+```diff
+- [Before: buried answer, passive language, vague stats]
++ [After: direct answer-first, active language, specific numbers, and E-E-A-T citation]
+```
 
 ## Guardrails
-
-- Never fabricate statistics, sources, or credentials to fake E-E-A-T. If a claim needs evidence the user doesn't have, flag it (⚠️) for them to supply — a hallucinated citation destroys trust and citability.
-- Keep the human's real expertise front and center; GEO amplifies genuine authority, it can't invent it.
-
-See `references/citability-checklist.md` for the full scoring rubric.
+- **Never fabricate E-E-A-T details:** If primary sources, author credentials, or data is missing, flag it (⚠️) and prompt the user to provide real information. Do not invent it.
+- **Maintain Tone:** Ensure rewritten sections respect the brand's original voice guide.

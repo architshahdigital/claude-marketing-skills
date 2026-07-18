@@ -13,48 +13,63 @@ description: >
 
 A product page has one job: convert a scanning shopper into a buyer while staying findable in search. This skill rewrites a listing so it ranks for the right terms *and* answers the buyer's real questions before they bounce.
 
-## Inputs
+## Fallback: Running in Cloud/Web Environments (e.g., Claude.ai, CoWork)
 
-- Product details (what it is, key features, materials/specs, differentiators)
-- Platform (Amazon / Shopify / other) and category
-- Target keywords (or ask the skill to propose them) and main competitors
-- Any brand-voice profile (from `brand-voice-kit`)
+If you are running in a cloud-based or web-based environment (such as Claude.ai web or CoWork) where local file system or repository access is unavailable:
+1. Ask the user to paste their existing product listing, product specifications, list of keywords, and target platform (Amazon/Shopify) directly in the chat.
+2. Conduct the search/SEO keyword mapping, listing optimization, and copy creation manually in-context.
+3. Output the optimized title, bullets, A+ layout, and image shot list using the templates below.
 
-## The optimization pass
+---
 
-### 1. Keyword foundation
-- Identify the primary keyword + 5–10 secondary/long-tail terms buyers actually search
-- Map them to placement: title (highest value), bullets, description, backend/search terms
-- Never keyword-stuff — every term must read naturally to a human first
+## Workflow
 
-### 2. Title
-- Lead with the brand + core product + the one attribute that matters most
-- Front-load the primary keyword; keep it scannable; respect platform length limits
+1. **Product Intake & Keyword Mapping:**
+   - Gather product details, materials, specs, unique selling propositions (USPs), and target keywords.
+   - Establish the target search volume map (Primary keyword vs. 5–10 secondary search terms).
 
-### 3. Bullets / key features (benefit-first)
-- Each bullet = **benefit → feature that delivers it** (not a spec dump)
-- Cover the top buyer questions and objections (fit, durability, use case, what's included)
-- One idea per bullet; lead with the outcome the shopper cares about
+2. **Optimize Title:**
+   - Frontload the brand name, core product category, and the single most important feature or benefit.
 
-### 4. Description / A+ / enhanced content
-- Tell the product story: problem → solution → proof → use
-- Structure for skimming (headers, short blocks); weave in secondary keywords
-- For **A+ / enhanced content**: plan modules — hero, comparison chart, feature callouts, brand story, lifestyle — each with a job and copy
+3. **Optimize Key Bullet Points (Benefit-First):**
+   - Write 5 comprehensive, benefit-first bullet points. Structure: **Outcome/Benefit** (in bold/brackets) → **Feature/Spec** that makes it happen.
 
-### 5. Image shot list
-- Main: clean product on white (platform rule)
-- Then: scale/context, key-feature infographics, in-use lifestyle, what's-in-the-box, comparison
-- Note the message each image must land (images sell harder than text on mobile)
+4. **Optimize Description & A+ Content Layout:**
+   - Design the visual story block outline, separating content into modules (Hero banner, USP grids, comparison tables).
 
-## Output
+5. **Create Image Shot List:**
+   - Detail a 6-7 image storyboard with visual directions, dimensions, and the primary message each image must convey.
 
-1. **Rewritten listing** — title, bullets, description (keyword-mapped, benefit-first)
-2. **A+ / enhanced content module plan** (if applicable)
-3. **Image shot list** with the message per shot
-4. **Keyword placement map** — where each term lives
+---
 
-## Guardrails
+## Templates & Output Format
 
-- No fabricated claims, fake reviews, or unverifiable superlatives ("#1 best") — flag (⚠️) anything the user must substantiate; false claims risk account suspension and returns.
-- Follow platform content policies (prohibited claims, restricted terms) and note likely violations.
-- Optimize for the human buyer first; search visibility second — a keyword-stuffed listing that reads like a robot loses the sale.
+Ensure the output is clean and structured for easy platform loading:
+
+### 1. Optimized Listing Copy
+
+#### 🏷️ Product Title
+> **Format:** `[Brand Name] [Primary Keyword] – [Main Attribute/USP] – [Pack Size/Dimensions] – [Model/Color]` (Keep under 150-200 characters based on platform limits).
+
+*   **Optimized Copy:** *Insert high-converting title draft here*
+*   **Target Keywords Utilized:** `[keyword1]`, `[keyword2]`
+
+#### 📝 Key Features (Bullets)
+Generate 5 benefit-first bullets using this exact layout:
+*   🚀 **[OUTCOME/BENEFIT IN ALL CAPS]** – *Action-oriented description of the feature and how it resolves a specific customer pain point. (Weave in secondary keywords).*
+*   🛡️ **[DURABILITY & ASSURANCE]** – *Details on materials, warranty, or quality metrics.*
+*   🧩 **[COMPATIBILITY & SPECIFICATIONS]** – *Dimensions, compatibility limits, or what is in the box.*
+
+---
+
+### 2. A+ Content Layout & Image Shot List
+
+| Image # | Shot Type | Visual Description | Overlay Text & Callout | Core Message / Goal |
+| :---: | :--- | :--- | :--- | :--- |
+| **1** | **Main Cover** | Clean product against a pure white background. | None (compliance rules) | Show the physical product. |
+| **2** | **Infographic** | Highlighting product dimensions or specs. | "Perfect fit for..." | Address compatibility questions. |
+| **3** | **Lifestyle** | Product in active use in its natural environment. | "Enjoy X without the Y" | Drive emotional desire. |
+| **4** | **Comparison** | Matrix comparing the product vs. generic models. | "Why choose [Brand]?" | Handle competitive objections. |
+
+> [!WARNING]
+> Ensure all product claims (e.g. "lasts 10 hours", "made of 100% titanium") are verified. Mark any claims requiring user confirmation with a warning flag (⚠️).

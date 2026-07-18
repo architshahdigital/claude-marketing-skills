@@ -14,48 +14,59 @@ description: >
 
 Turn a product and a budget into a launch-ready paid-media plan. This skill structures the account correctly *before* a rupee is spent, then generates the copy variants to test — so spend maps to a hypothesis, not a guess.
 
-## Inputs to gather
+## Fallback: Running in Cloud/Web Environments (e.g., Claude.ai, CoWork)
 
-- **Product/offer** and its one core value proposition
-- **Objective** (awareness / traffic / leads / sales) and the platform(s)
-- **Budget** (total + timeframe) and target geo/audience
-- **Constraints** — banned claims, brand voice, compliance notes
+If you are running in a cloud-based or web-based environment (such as Claude.ai web or CoWork) where local file system or repository access is unavailable:
+1. Ask the user to paste their product description, offer details, total budget, target audience, and platforms directly in the chat.
+2. Perform the campaign account architecture planning and copy drafting manually in-context.
+3. Output the structured blueprint, target audiences, and the exact copy matrix matching the templates below.
 
-## Campaign architecture
+---
 
-Structure by **funnel stage**, one hypothesis per ad set:
+## Workflow
 
-| Stage | Goal | Audience | Budget guide |
-|-------|------|----------|-------------|
-| **Prospecting (TOF)** | Reach new people | Broad + interest/lookalike | 50–60% |
-| **Consideration (MOF)** | Warm engagers | Video viewers, site visitors, engagers | 25–30% |
-| **Conversion (BOF)** | Close intent | Cart/checkout, high-intent search, retargeting | 15–20% |
+1. **Information Gathering:**
+   - Define the product/service, target cost per acquisition (CPA) if known, and total monthly budget.
+   - Clarify the primary target platform (Meta Ads vs. Google Ads vs. Both).
 
-- **Meta:** keep 3–5 ads per ad set, let the algorithm optimize; avoid over-segmenting (fragments the learning phase).
-- **Google:** separate Search (intent) from Performance Max/Display (discovery); mirror ad groups to tight keyword themes.
+2. **Campaign Account Architecture:**
+   - Map out a clean campaign structure based on funnel stages: Top of Funnel (TOF), Middle of Funnel (MOF), and Bottom of Funnel (BOF).
+   - Formulate the exact budget splits and objectives for each ad set.
 
-## Ad copy system
+3. **Audience Targeting Matrix:**
+   - Define targeting variables (demographics, interests, lookalikes, custom lists, exclusions).
 
-For each ad set, generate **3–4 distinct angles** so the test is meaningful (not four rewrites of one idea):
+4. **Ad Copy Variant Generation:**
+   - Generate copy for 3–4 distinct creative angles:
+     - **Angle 1 (Problem-Agitate-Solve):** Pain point focus.
+     - **Angle 2 (Outcome/Benefit-Led):** Highlighting the "after-state".
+     - **Angle 3 (Social Proof/Authority):** Review, stat, or testimonial focus.
+     - **Angle 4 (Contrarian/Pattern-Break):** Contrarian take or hook.
 
-1. **Problem–agitate–solve** — name the pain, twist it, resolve with the offer
-2. **Outcome/benefit-led** — the after-state the buyer wants
-3. **Proof/authority** — data, results, credibility
-4. **Contrarian/pattern-break** — challenge the default assumption
+5. **Testing & Optimization Roadmap:**
+   - Define the key performance indicators (KPIs) to track and clear guidelines for scaling vs. killing ad variants.
 
-Each angle ships with: 3 headline options, 1 primary text (short + long), and a CTA matched to the funnel stage.
+---
 
-## Testing roadmap
+## Templates & Output Format
 
-- Test **one variable at a time** (creative *or* audience *or* copy), not everything at once.
-- Give each ad set enough budget/time to exit the learning phase before judging.
-- Define the **primary metric per stage** upfront (TOF: CPM/CTR · MOF: cost per engagement · BOF: CPA/ROAS).
-- Kill losers on the metric, not on vanity numbers; scale winners gradually (avoid budget shocks that reset learning).
+### 1. Account Structure & Budget Blueprint
 
-## Guardrails
+| Campaign / Ad Set Name | Objective | Target Audience | Budget Share (%) | Daily Budget |
+| :--- | :--- | :--- | :---: | :--- |
+| **TOF Prospecting** | Sales (CBO/ABO) | Broad + Lookalikes | `55%` | `₹X / $X` |
+| **MOF Consideration** | Engagement | Page/Video Engagers | `25%` | `₹X / $X` |
+| **BOF Retargeting** | Sales | Website Visitors / Cart | `20%` | `₹X / $X` |
 
-- No fabricated claims, fake urgency, or unverifiable stats — flag anything the user must substantiate (⚠️).
-- Respect platform policies (health/finance/employment restrictions); note when a claim is likely to be disapproved.
-- Budgets and CPAs are planning estimates, not guarantees — label them as such.
+### 2. Ad Copy Variant Matrix
+Generate copy using this exact clean structure for each ad set:
 
-See `references/copy-angles.md` for angle templates and hook patterns.
+#### **[Creative Angle 1: Problem-Agitate-Solve]**
+*   **Primary Text (Short - Under 150 chars):** *Insert scroll-stopping copy*
+*   **Primary Text (Long - Under 400 chars):** *Insert conversion-optimized copy*
+*   **Headline 1 (Punchy - Under 25 chars):** *Insert headline*
+*   **Headline 2 (Offer-led - Under 25 chars):** *Insert headline*
+*   **Call to Action (CTA):** `[Shop Now / Learn More / Sign Up]`
+
+> [!IMPORTANT]
+> Keep ad copy completely policy-compliant. Avoid clickbait, fake countdown timers, or misleading claims. Mark any claims that need verification with a warning flag (⚠️).

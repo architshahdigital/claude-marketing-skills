@@ -14,40 +14,77 @@ description: >
 
 One idea, produced once, deployed everywhere — but *native* everywhere. This skill atomizes a hero asset into platform-specific content so each piece earns attention on its own channel rather than reading like a cross-post.
 
-## Inputs
+## Fallback: Running in Cloud/Web Environments (e.g., Claude.ai, CoWork)
 
-- The **hero asset** (paste or link) and its single core message
-- **Brand voice** notes (tone, banned words, must-mention disclaimers)
-- **Platforms** wanted and any channel the user over-indexes on
+If you are running in a cloud-based or web-based environment (such as Claude.ai web or CoWork) where local file system or repository access is unavailable:
+1. Ask the user to paste their long-form text (blog post, newsletter, script, transcript) directly into the chat.
+2. Ask the user to specify their brand voice or style guide (if any).
+3. Perform the analysis, extraction, and rewriting manually in-context.
+4. Output the structural theme analysis and the platform-native drafts matching the templates below.
 
-## The atomization pass
+---
 
-Extract the reusable building blocks first, then shape them per platform:
+## Workflow
 
-1. **Core thesis** — the one sentence the whole asset proves
-2. **Supporting points** — 3–5 standalone insights
-3. **Proof** — data, examples, quotes, stories
-4. **Hooks** — 3–5 attention-earning openers pulled from the strongest lines
+1. **Analysis & Extraction:**
+   - Ingest the long-form source document.
+   - Extract the core thesis, 3–5 supporting points, any data/metrics/proof points, and 3–5 potential hooks.
 
-## Platform shaping
+2. **Aesthetic Audit & Exclusions:**
+   - Establish rules for what to avoid (e.g., cliché intros, corporate jargon, generic formatting).
 
-| Platform | Format | Native rules |
-|----------|--------|-------------|
-| **LinkedIn** | Hook + 3 short insights + soft CTA | Short lines, whitespace, no link in body, one idea |
-| **Instagram** | 3 caption angles (educational / story / contrarian) | Front-load the hook, conversational, clear CTA |
-| **X / Twitter** | 1 punchy one-liner + 1 thread outline | Tight, opinionated, thread = one idea per post |
-| **Short-form video** | 25–35s script | Spoken hook in first 2s, on-screen text cues, one payoff |
+3. **Platform-Native Writing:**
+   - Write drafts for the requested platforms:
+     - **LinkedIn:** Focused on professional insights, clean spacing, and a clear call-to-action.
+     - **Instagram Captions:** Frontloaded hook, storytelling/educational focus.
+     - **X (Twitter) Thread:** 4-5 tweet thread outline focusing on a single, clear narrative arc.
+     - **Short-form Video Script:** 25-35s vertical video script with voiceover and visual/B-roll cues.
 
-Rewrite each natively — **no reused sentences across platforms.** Keep the thesis constant, vary the expression.
+4. **Fact-Checking Gate:**
+   - Flag any specific numbers, historical details, or claims that must be validated before going live.
 
-## Output
+---
 
-- A block per platform, ready to schedule
-- Each carries the same core message in its native shape
-- A ⚠️ list of any claim that needs a fact-check before publishing
+## Templates & Output Format
 
-## Guardrails
+Ensure the output is clean and ready to copy-paste into scheduling tools:
 
-- One idea per asset — resist cramming the whole hero piece into each post.
-- If a repurposed hook overpromises beyond what the asset delivers, soften it.
-- Flag (⚠️), don't invent, any stat or claim not present in the source.
+### 1. LinkedIn Post Draft
+> **Format:** Clean spacing, active voice, bold first line, no hashtags in body.
+```markdown
+[Hook: Bold contrarian take or compelling stat]
+
+[Body: 3 short, bulleted insights explaining the concept]
+
+[CTA: Friendly invitation to discuss or check the main link]
+```
+
+### 2. Instagram Caption Drafts
+Generate 3 variations (Educational, Story-based, Contrarian) using this structure:
+```markdown
+📸 [Headline Hook - CAPITALIZED]
+
+[Conversational body copy explaining the concept]
+
+📍 [Clear Actionable CTA]
+```
+
+### 3. X (Twitter) Thread Outline
+```markdown
+🧵 1/4 [The Hook: What is this thread about and why read it?]
+🧵 2/4 [The core problem or context]
+🧵 3/4 [The main solution or step]
+🧵 4/4 [Conclusion & CTA]
+```
+
+### 4. Reel/TikTok Video Script (25-30 seconds)
+
+| Time | Visual / B-Roll Cue | Audio / Voiceover |
+| :---: | :--- | :--- |
+| **0-2s** | *[On-screen text: Bold hook. Zoom in on speaker]* | "[Hook: Speak directly to the pain point/solution]" |
+| **2-10s** | *[Transition: Screen capture or physical gesture]* | "[Deliver the core insight or step 1]" |
+| **10-20s**| *[Transition: High-pace edit showing action]* | "[Deliver step 2 and the payoff]" |
+| **20-30s**| *[Visual: Point to link or smile at camera]* | "[Call to action: Shop the link in bio/save this post]" |
+
+> [!WARNING]
+> Keep the spoken copy conversational and brief. Avoid text-heavy slides or complex sentence structures.

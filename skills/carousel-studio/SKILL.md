@@ -13,37 +13,56 @@ description: >
 
 Carousels win saves and shares because they teach in swipes. This skill turns a topic or content pillar into production-ready carousel briefs — the words *and* the visual direction — so a designer (or an image tool) can build them without a second conversation.
 
-## Inputs
+## Fallback: Running in Cloud/Web Environments (e.g., Claude.ai, CoWork)
 
-- **Topic or pillar**, target audience, and platform (Instagram / LinkedIn)
-- **Brand context** — voice, colors/fonts if known, the CTA that matters
-- **How many** carousels (one, or a batch)
+If you are running in a cloud-based or web-based environment (such as Claude.ai web or CoWork) where local file system or repository access is unavailable:
+1. Ask the user to paste their topic, target audience, and platforms directly in the chat.
+2. Design the concept, slide-by-slide copy, and visual directions manually in-context.
+3. Output the structured slide-by-slide brief and the post caption using the templates below.
 
-## Anatomy of a carousel that gets saved
+---
 
-| Slide | Job |
-|-------|-----|
-| **1 — Hook** | Stop the scroll: bold promise, contrarian take, or a number. One line, big. |
-| **2 — Stakes** | Why this matters now / the cost of getting it wrong |
-| **3…n — Value** | One idea per slide, teach in sequence, keep momentum |
-| **n−1 — Payoff** | The synthesis / the "aha" that makes the swipe worth it |
-| **Final — CTA** | One clear action: follow, save, comment, or link |
+## Workflow
 
-Rules: **one idea per slide**, ruthless word economy (a slide is a billboard, not a paragraph), and a through-line so each slide earns the next swipe.
+1. **Carousel Concept Ideation:**
+   - Define the single core lesson or takeaway.
+   - Choose the visual/structural style (e.g., list, comparison table, step-by-step, infographic, framework breakdown).
 
-## Output per concept
+2. **Slide-by-Slide Writing:**
+   - Map out the carousel slides (ideally 6-10 slides for maximum retention).
+   - Write short, high-impact copy for each slide. Limit text to a maximum of 25 words per slide.
 
-1. **Concept line** — what the carousel is and why it'll perform
-2. **Slide-by-slide copy** — headline + supporting line for every slide
-3. **Visual direction** — layout note, emphasis, and any data/graphic cues per slide
-4. **Caption** — hook + context + CTA + first-comment idea
+3. **Visual Direction Design:**
+   - Add specific visual, icon, and layout instructions for each slide to guide the design phase.
 
-For a batch, vary the angles across concepts (educational, myth-bust, story, list, framework) so the set doesn't feel repetitive.
+4. **Caption Writing:**
+   - Create a matching post caption with hooks and a clear call-to-action.
 
-## Guardrails
+---
 
-- Keep claims honest — no invented stats on a slide (they get screenshotted).
-- Match slide count to the idea (6–10 is the sweet spot); don't pad to hit a number.
-- Preserve brand voice across every slide.
+## Templates & Output Format
 
-Hand the finished brief to a design step or tool to produce the visuals.
+Ensure the output uses the structured slide-by-slide table format below:
+
+### 1. Carousel Slide Brief (Slide-by-Slide)
+
+| Slide # | Slide Type | On-Screen Copy (Text) | Visual & Layout Direction |
+| :---: | :--- | :--- | :--- |
+| **1** | **Hook (Cover)** | `[Headline: Keep it under 10 words, bold, large type]` | *Visual hook: High contrast background, centered text, swipe indicator.* |
+| **2** | **The Stakes** | `[1-2 sentences mapping the core pain point or status quo]` | *Show a subtle illustrative chart or a warning icon.* |
+| **3** | **Step/Idea 1** | `[Title + 1 line explaining the first actionable insight]` | *Grid layout, highlight key words in bold.* |
+| **4** | **Step/Idea 2** | `[Title + 1 line explaining the second actionable insight]` | *Flowchart style connecting to the next slide.* |
+| **5** | **The Payoff** | `[The core "Aha!" realization or summary]` | *Vibrant contrast shift, clean centered layout.* |
+| **6** | **CTA (Last)** | `[Clear instructions: Save this post, comment, or check link]` | *Include save/share icons, profile handle, and brand colors.* |
+
+### 2. Carousel Caption
+```markdown
+💬 [Hook: Punchy question or statement matching Slide 1]
+
+[Detailed caption body with spacing, providing extra context]
+
+📌 Save this post for your next campaign!
+```
+
+> [!TIP]
+> Keep slide copy extremely brief. The design should look premium, with plenty of white space. A slide is a billboard, not a document.

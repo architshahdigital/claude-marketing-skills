@@ -14,47 +14,60 @@ description: >
 
 Great content can't rank on a broken foundation. This skill checks the machine-readable health of a site — can search engines crawl it, index it, and does it load fast enough to keep users — and returns a fix list ordered by what actually moves the needle.
 
-## Inputs
+## Fallback: Running in Cloud/Web Environments (e.g., Claude.ai, CoWork)
 
-- Site URL (and sitemap URL if known)
-- Access to any of: Google Search Console, an analytics tool, a crawler/PageSpeed data (ask the user to paste what they have)
-- Priority pages (money pages / top templates)
+If you are running in a cloud-based or web-based environment (such as Claude.ai web or CoWork) where local file system or repository access is unavailable:
+1. Ask the user to provide their site URL, sitemap link, or paste Google Search Console (GSC) screenshots, crawl logs, or PageSpeed Insights data.
+2. Conduct the technical audit, indexation check, and Core Web Vitals analysis manually in-context.
+3. Output the structured Scorecard and the Prioritized Fix List using the templates below.
 
-## The audit surface
+---
 
-Work through each area; note pass / warn / fail and the affected URLs.
+## Workflow
 
-### 1. Crawlability & indexation
-- `robots.txt` isn't blocking important paths; sitemap exists, is valid, and is submitted
-- No accidental `noindex` on money pages; canonical tags are self-referencing and correct
-- Indexed count roughly matches intended pages (catch bloat from parameters, filters, duplicates)
+1. **Intake & Data Gathering:**
+   - Request URLs, GSC error lists, or PageSpeed metrics.
+   - Define the main objective (e.g., debugging indexation drops, fixing Core Web Vitals, migrating domains).
 
-### 2. Site architecture
-- Important pages within ~3 clicks of the homepage
-- Logical internal linking; no orphan pages; descriptive anchor text
-- Clean, stable URL structure; redirects are 301 (not chains or loops)
+2. **Crawl & Indexation Check:**
+   - Audit `robots.txt` rules, XML sitemap validation, canonical setups, and `noindex` directives.
 
-### 3. Core Web Vitals & speed
-- **LCP** (largest contentful paint) — optimize the hero image/font, server response
-- **INP** (interaction latency) — trim heavy JS, break up long tasks
-- **CLS** (layout shift) — set image/embed dimensions, reserve ad/space slots
-- Compress and lazy-load images; defer non-critical JS/CSS; enable caching/CDN
+3. **Site Architecture & Internal Links:**
+   - Evaluate crawl depth (clicks from home page), internal link anchors, and redirect setups (301 vs. chains/loops).
 
-### 4. Mobile & rendering
-- Mobile-friendly, responsive, tap targets sized right
-- Content renders without JS where possible; no mobile/desktop parity gaps
+4. **Page Speed & Core Web Vitals Audit:**
+   - Evaluate:
+     - **LCP (Largest Contentful Paint):** Loading speed of main images/fonts.
+     - **INP (Interaction to Next Paint):** Input latency and heavy JS execution.
+     - **CLS (Cumulative Layout Shift):** Visual stability of layout.
 
-### 5. Structured data & basics
-- Valid schema for the page type; no critical errors
-- Titles/meta present and unique; HTTPS everywhere; no mixed content
+5. **Schema & Semantic Markup:**
+   - Verify structured data (LocalBusiness, Article, Product, FAQ) for eligibility in Google Rich Snippets.
 
-## Output
+---
 
-1. **Scorecard** — pass/warn/fail per area
-2. **Prioritized fix list** — each issue tagged **impact** (high/med/low) × **effort** (S/M/L); do high-impact/low-effort first
-3. **The "fix these three first"** callout — the highest-leverage items
+## Templates & Output Format
 
-## Guardrails
+Ensure the audit results are clear, structured, and prioritized:
 
-- Diagnose from real data (Search Console, crawl, PageSpeed) — flag (⚠️) anything you're inferring without it rather than asserting it.
-- Speed/ranking outcomes are estimates; frame them as expected direction, not guarantees.
+### 1. Technical SEO Health Scorecard
+
+| Audit Area | Status | Gaps & Issues Detected |
+| :--- | :---: | :--- |
+| **Crawlability & Indexation** | `[PASS / WARN / FAIL]` | *E.g., Missing robots sitemap link, canonical loop.* |
+| **Site Architecture** | `[PASS / WARN / FAIL]` | *E.g., Orphan pages, deep redirect chains.* |
+| **Core Web Vitals & Speed** | `[PASS / WARN / FAIL]` | *E.g., Poor LCP due to uncompressed images.* |
+| **Mobile & Rendering** | `[PASS / WARN / FAIL]` | *E.g., Non-responsive tables, small tap targets.* |
+| **Structured Data (Schema)** | `[PASS / WARN / FAIL]` | *E.g., Missing required fields in Product schema.* |
+
+### 2. Prioritized Technical Fix List
+Rank issues using the impact-effort matrix (High Impact + Low Effort = Priority 1):
+
+| Priority | Issue / Fix Required | Affected Pages | Impact | Effort | Recommendation / Solution |
+| :---: | :--- | :--- | :---: | :---: | :--- |
+| **1** | E.g., Eliminate 3 redirect loops on homepage. | `homepage` | `HIGH` | `LOW` | Update link destinations to final URLs. |
+| **2** | E.g., Add dimensions to hero images (CLS fix). | `blog template` | `MEDIUM` | `LOW` | Set explicit `width` and `height` attributes. |
+| **3** | E.g., Lazy-load B-roll videos below-the-fold. | `landing-page` | `HIGH` | `MEDIUM`| Implement standard lazy loading/defer scripting. |
+
+> [!IMPORTANT]
+> **Priority Focus:** Highlight the **Top 3 High-Impact Fixes** in a clear callout box at the top of your response to give the user immediate focus.
